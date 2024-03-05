@@ -25,6 +25,29 @@ function returnsPositiveIntegers(string) {
   return parseInt(result, 10);
 }
 
+const getOpportunityMeet = (workDayStart, workDayEnd, meetingStart, durationMeetingMinuts) => {
+  workDayStart = workDayStart.split(':');
+  workDayEnd = workDayEnd.split(':');
+  meetingStart = meetingStart.split(':');
+  for (let i = 0; i <= 1 ; i++) {
+    workDayStart[i] /= 1;
+    workDayEnd[i] /= 1;
+    meetingStart[i] /= 1;
+  }
+  let meetingEnd = [];
+  meetingEnd[0] = meetingStart[0] + (durationMeetingMinuts / 60);
+  meetingEnd[1] = meetingStart[1] + (durationMeetingMinuts % 60);
+  return (workDayStart[0] * 60 + workDayStart[1] <= meetingStart[0] * 60 + meetingStart[1] && workDayEnd[0] * 60 + workDayEnd[1] >= meetingEnd[0] * 60 + meetingEnd[1]);
+};
+
+
+console.log(getOpportunityMeet('08:00', '17:30', '14:00', 90)); // true
+console.log(getOpportunityMeet('8:0', '10:0', '8:0', 120)); // true
+console.log(getOpportunityMeet('08:00', '14:30', '14:00', 90)); // false
+console.log(getOpportunityMeet('14:00', '17:30', '08:0', 90)); // false
+console.log(getOpportunityMeet('8:00', '17:30', '08:00', 900)); // false
+
+
 // Строка короче 20 символов
 checksStringLength('проверяемая строка', 20); // true
 // Длина строки ровно 18 символов
