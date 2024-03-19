@@ -1,4 +1,2 @@
-import {similarPhotoDescriptions} from './createMiniatures.js';
-console.log(similarPhotoDescriptions);
-
-
+import {pictures, displaysPictures} from './create-pictures.js';
+displaysPictures(pictures);
