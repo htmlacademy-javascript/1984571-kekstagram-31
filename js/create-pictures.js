@@ -1,6 +1,5 @@
 import {COMMENTS, NAMES, DESCRIPTIONS} from './data.js';
 import {getRandomInteger, createRandomIdFromRangeGenerator, getRandomArrayElement} from './util.js';
-
 const PICTURES_NUMBER = 25;
 const COMMENTS_NUMBER = {
   MIN: 0,
@@ -36,20 +35,5 @@ const createPicture = () => ({
 });
 const pictures = Array.from({length: PICTURES_NUMBER}, createPicture);
 
-const picturesList = document.querySelector('.pictures');
-const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
-const picturesFragment = document.createDocumentFragment();
+export { pictures };
 
-const displaysPictures = (allPictures) => {
-  allPictures.forEach(({url, description, likes, comments}) => {
-    const pictureElement = pictureTemplate.cloneNode(true);
-    pictureElement.querySelector('.picture__img').src = url;
-    pictureElement.querySelector('.picture__img').alt = description;
-    pictureElement.querySelector('.picture__likes').textContent = likes;
-    pictureElement.querySelector('.picture__comments').textContent = comments;
-    picturesFragment.appendChild(pictureElement);
-    picturesList.appendChild(picturesFragment);
-  });
-};
-
-export {pictures, displaysPictures};
