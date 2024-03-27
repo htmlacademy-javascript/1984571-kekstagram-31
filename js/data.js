@@ -2,4 +2,4 @@ const COMMENTS = ['Всё отлично!', 'В целом всё неплохо
 const NAMES = ['Роман', 'Никита', 'Дмитрий', 'Юлия', 'София', 'Ирина', 'Злата', 'Елизавета', 'Александр'];
 const DESCRIPTIONS = ['Природа', 'Котики', 'Собака', 'Панда', 'Медведь', 'Цветок', 'Лиса', 'Волк', 'Еж', 'Лягушка', 'Енот'];
 
-export {COMMENTS, NAMES, DESCRIPTIONS};
+export { COMMENTS, NAMES, DESCRIPTIONS };
