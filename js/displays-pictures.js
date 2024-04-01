@@ -2,7 +2,7 @@ const picturesList = document.querySelector('.pictures');
 const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
 const picturesFragment = document.createDocumentFragment();
 
-const displaysPictures = (pictures) => {
+const displayPictures = (pictures) => {
   pictures.forEach(({ id, url, description, likes, comments }) => {
     const pictureElement = pictureTemplate.cloneNode(true);
     pictureElement.dataset.pictureId = id;
@@ -15,4 +15,4 @@ const displaysPictures = (pictures) => {
   });
 };
 
-export { displaysPictures, picturesList };
+export { displayPictures, picturesList };
