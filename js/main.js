@@ -2,7 +2,7 @@ import { displayPictures } from './displays-pictures.js';
 import { pictures } from './create-pictures.js';
 import { picturesList } from './displays-pictures.js';
 import { openBigPicture } from './big-picture-modal.js';
-//import { displaysCommentsBigPicture } from './displays-comments-big-picture.js';
+import { initUploadModal } from './upload-picture-forms.js';
 
 displayPictures(pictures);
 
@@ -13,3 +13,5 @@ picturesList.addEventListener('click', (evt) => {
     openBigPicture(currentPicture.dataset.pictureId);
   }
 });
+
+initUploadModal();
