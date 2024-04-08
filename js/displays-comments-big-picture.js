@@ -1,46 +1,46 @@
-const bigPictureCommentsLoader = document.querySelector('.comments-loader');
-let bigPictureCommentsFirstValue = 0;
-const bigPictureCommentsStepValue = 5;
-const bigPictureComments = document.querySelector('.social__comments');
-const bigPictureCommentTemplate = bigPictureComments.querySelector('.social__comment');
-const bigPictureDisplayCommentsNumber = document.querySelector('.social__comment-shown-count');
-const bigPictureAllCommentsNumber = document.querySelector('.social__comment-total-count');
+const COMMENTS_STEP_VALUE = 5;
+const commentsLoader = document.querySelector('.comments-loader');
+const comments = document.querySelector('.social__comments');
+const commentTemplate = comments.querySelector('.social__comment');
+const displayCommentsNumber = document.querySelector('.social__comment-shown-count');
+const allCommentsNumber = document.querySelector('.social__comment-total-count');
+let commentsFirstValue = 0;
 let currentPictureComments = [];
 
-const displaysBigPictureNextComments = () => {
-  const displayСommentsBigPicture = currentPictureComments.slice(bigPictureCommentsFirstValue, bigPictureCommentsFirstValue + bigPictureCommentsStepValue);
-  const displayСommentsLengthBigPicture = displayСommentsBigPicture.length + bigPictureCommentsFirstValue;
-  const bigPictureCommentsFragment = document.createDocumentFragment();
-  displayСommentsBigPicture.forEach((comment) => {
-    const bigPictureComment = bigPictureCommentTemplate.cloneNode(true);
+const displayNextComments = () => {
+  const displayСomments = currentPictureComments.slice(commentsFirstValue, commentsFirstValue + COMMENTS_STEP_VALUE);
+  const displayСommentsLength = displayСomments.length + commentsFirstValue;
+  const commentsFragment = document.createDocumentFragment();
+  displayСomments.forEach((comment) => {
+    const bigPictureComment = commentTemplate.cloneNode(true);
     bigPictureComment.querySelector('.social__picture').src = comment.avatar;
     bigPictureComment.querySelector('.social__picture').alt = comment.name;
     bigPictureComment.querySelector('.social__text').textContent = comment.message;
-    bigPictureCommentsFragment.appendChild(bigPictureComment);
+    commentsFragment.appendChild(bigPictureComment);
   });
-  bigPictureComments.appendChild(bigPictureCommentsFragment);
+  comments.appendChild(commentsFragment);
 
 
-  bigPictureDisplayCommentsNumber.textContent = `${displayСommentsLengthBigPicture}`;
-  bigPictureAllCommentsNumber.textContent = currentPictureComments.length;
-  if (displayСommentsLengthBigPicture >= currentPictureComments.length) {
-    bigPictureCommentsLoader.classList.add('hidden');
+  displayCommentsNumber.textContent = `${displayСommentsLength}`;
+  allCommentsNumber.textContent = currentPictureComments.length;
+  if (displayСommentsLength >= currentPictureComments.length) {
+    commentsLoader.classList.add('hidden');
   }
-  bigPictureCommentsFirstValue += bigPictureCommentsStepValue;
+  commentsFirstValue += COMMENTS_STEP_VALUE;
 };
 
-const clearCommentsBigPicture = () => {
-  bigPictureCommentsFirstValue = 0;
-  bigPictureComments.innerHTML = '';
-  bigPictureCommentsLoader.classList.remove('hidden');
+const clearComments = () => {
+  commentsFirstValue = 0;
+  comments.innerHTML = '';
+  commentsLoader.classList.remove('hidden');
 };
 
-const displaysCommentsBigPicture = (currentSmallPictureComments) => {
+const displayComments = (currentSmallPictureComments) => {
   currentPictureComments = currentSmallPictureComments;
-  clearCommentsBigPicture();
-  displaysBigPictureNextComments();
-  bigPictureCommentsLoader.addEventListener('click', displaysBigPictureNextComments);
+  clearComments();
+  displayNextComments();
+  commentsLoader.addEventListener('click', displayNextComments);
 };
 
 
-export { displaysCommentsBigPicture, clearCommentsBigPicture};
+export { displayComments, clearComments };

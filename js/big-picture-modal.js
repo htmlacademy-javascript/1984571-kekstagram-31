@@ -1,6 +1,6 @@
 import { pictures } from './create-pictures.js';
-import { displaysCommentsBigPicture } from './displays-comments-big-picture.js';
-import { clearCommentsBigPicture } from './displays-comments-big-picture.js';
+import { displayComments } from './displays-comments-big-picture.js';
+import { clearComments } from './displays-comments-big-picture.js';
 const bigPicture = document.querySelector('.big-picture');
 const bigPictureImg = document.querySelector('.big-picture__img').children[0];
 const bigPictureLikesCount = document.querySelector('.likes-count');
@@ -18,7 +18,7 @@ const onEscKeydown = (evt) => {
   }
 };
 function closeBigPicture() {
-  clearCommentsBigPicture();
+  clearComments();
   bigPicture.classList.add('hidden');
   bigPictureCancel.removeEventListener('click', onBigPictureCancelClick);
   document.body.classList.remove('modal-open');
@@ -29,7 +29,7 @@ const openBigPicture = (pictureId) => {
   bigPictureImg.src = currentPicture.url;
   bigPictureLikesCount.textContent = currentPicture.likes;
   bigPictureDescription.textContent = currentPicture.description;
-  displaysCommentsBigPicture(currentPicture.comments);
+  displayComments(currentPicture.comments);
   bigPicture.classList.remove('hidden');
   bigPictureCancel.addEventListener('click', onBigPictureCancelClick);
   document.body.classList.add('modal-open');
