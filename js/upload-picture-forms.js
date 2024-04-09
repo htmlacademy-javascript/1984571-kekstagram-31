@@ -1,5 +1,6 @@
 import { isEscapeKey } from './util.js';
 import { error, isHashtagsValid } from './check-hashtag-validity.js';
+import { initEffectsSlider } from './effects-slider.js';
 const SCALE_STEP = 0.25;
 const uploadForm = document.querySelector('.img-upload__form');
 const uploadFile = uploadForm.querySelector('#upload-file');
@@ -76,4 +77,6 @@ smaller.addEventListener('click', onSmallerClick);
 bigger.addEventListener('click', onBiggerClick);
 pictureUploadForm.addEventListener('submit', onFormSubmit);
 
-export {initUploadModal};
+initEffectsSlider();
+
+export {initUploadModal };
