@@ -7,6 +7,7 @@ const picturesContainer = document.querySelector('.pictures');
 const imagePopup = document.querySelector('.big-picture');
 const exitImagePopup = imagePopup.querySelector('#picture-cancel');
 const commentsLoader = imagePopup.querySelector('.comments-loader');
+const body = document.body;
 
 const onDocumentEscKeydown = (evt) => {
   if (isEscapeKey(evt)) {
@@ -16,14 +17,14 @@ const onDocumentEscKeydown = (evt) => {
 
 function openPopupImage() {
   imagePopup.classList.remove('hidden');
-  document.body.classList.add('modal-open');
+  body.classList.add('modal-open');
 
   document.addEventListener('keydown', onDocumentEscKeydown);
 }
 
 function closePopupImage() {
   imagePopup.classList.add('hidden');
-  document.body.classList.remove('modal-open');
+  body.classList.remove('modal-open');
 
   document.removeEventListener('keydown', onDocumentEscKeydown);
 }

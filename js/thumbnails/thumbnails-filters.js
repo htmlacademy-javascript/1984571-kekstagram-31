@@ -12,23 +12,24 @@ const Filters = {
 
 const {DEFAULT, RANDOM, DISCUSSED} = Filters;
 
-const RANDOM_THUMBNAILS_TO_SHOW = 15;
+const RANDOM_THUMBNAILS_TO_SHOW = 10;
 const BUTTON_ACTIVE_CLASS = 'img-filters__button--active';
 
 const debounceRenderThumbnails = debounce(renderThumbnails);
 
 const applyFilters = (photos, target) => {
   let filteredPhotos = [];
+  const sortablePhotos = photos.slice(0);
 
   switch (target.id) {
     case DEFAULT:
       filteredPhotos = photos;
       break;
     case RANDOM:
-      filteredPhotos = photos.sort(() => 0.5 - Math.random()).slice(0, RANDOM_THUMBNAILS_TO_SHOW);
+      filteredPhotos = sortablePhotos.sort(() => 0.5 - Math.random()).slice(0, RANDOM_THUMBNAILS_TO_SHOW);
       break;
     case DISCUSSED:
-      filteredPhotos = photos.sort((a, b) => b.comments.length - a.comments.length);
+      filteredPhotos = sortablePhotos.sort((a, b) => b.comments.length - a.comments.length);
       break;
   }
   debounceRenderThumbnails(filteredPhotos);

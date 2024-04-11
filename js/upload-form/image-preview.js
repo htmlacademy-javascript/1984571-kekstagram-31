@@ -4,12 +4,12 @@ const fileChooser = document.querySelector('#upload-file');
 const imagePreview = document.querySelector('.img-upload__preview img');
 const effectsPreview = document.querySelectorAll('.effects__preview');
 
-const FILE_TYPES = ['.jpg', '.jpeg', '.png', '.webp'];
+const FILES_TYPES = ['.jpg', '.jpeg', '.png', '.webp'];
 
 const createImagePreview = () => {
   const file = fileChooser.files[0];
   const fileName = file.name.toLowerCase();
-  const matches = FILE_TYPES.some((elem) => fileName.endsWith(elem));
+  const matches = FILES_TYPES.some((elem) => fileName.endsWith(elem));
 
   if (matches) {
     imagePreview.src = URL.createObjectURL(file);
