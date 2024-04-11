@@ -24,9 +24,9 @@ const getComments = (comments, from, to) => {
     const comment = renderComment(comments[count]);
     fragment.append(comment);
   }
-  const result = [fragment, count];
+  const results = [fragment, count];
 
-  return result;
+  return results;
 };
 
 const renderComments = (openPhotoId, isCommentsLoaderClick) => {

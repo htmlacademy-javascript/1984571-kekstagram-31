@@ -2,6 +2,7 @@ import { isEscapeKey } from '../util.js';
 
 let message;
 let sendingResult;
+const body = document.body;
 
 const onBodyEscKeydown = (evt) => {
   if (isEscapeKey(evt)) {
@@ -29,15 +30,15 @@ const showMessage = (result) => {
   closeButton.addEventListener('click', () => {
     removeMessage();
   });
-  document.body.addEventListener('keydown', onBodyEscKeydown);
-  document.body.addEventListener('click', onBodyClick);
+  body.addEventListener('keydown', onBodyEscKeydown);
+  body.addEventListener('click', onBodyClick);
 
-  document.body.append(message);
+  body.append(message);
 };
 
 function removeMessage () {
-  document.body.removeEventListener('keydown', onBodyEscKeydown);
-  document.body.removeEventListener('click', onBodyClick);
+  body.removeEventListener('keydown', onBodyEscKeydown);
+  body.removeEventListener('click', onBodyClick);
   message.remove();
 }
 
